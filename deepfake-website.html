@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake AI - Pengaruh dalam Kehidupan</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #000066 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 255, 100, 0.05) 0%, transparent 50%);
+            animation: bgShift 10s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes bgShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00ffff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; }
+            to { text-shadow: 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #ff00ff; }
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+        
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+        
+        /* Card styling */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+            animation: cardSweep 1s ease-in-out;
+        }
+        
+        @keyframes cardSweep {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+            border-color: #ff00ff;
+        }
+        
+        .card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff00ff;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card p, .card ul {
+            color: #cccccc;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Detection methods special styling */
+        .detection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .detection-item {
+            background: rgba(255, 0, 255, 0.1);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .detection-item:hover {
+            background: rgba(255, 0, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+        }
+        
+        .detection-item h4 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Impact sections */
+        .impact-section {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            margin: 3rem 0;
+            overflow: hidden;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .positive-impact {
+            background: linear-gradient(135deg, rgba(0, 255, 100, 0.1), rgba(0, 100, 255, 0.1));
+            border-color: #00ff64;
+        }
+        
+        .negative-impact {
+            background: linear-gradient(135deg, rgba(255, 0, 100, 0.1), rgba(255, 100, 0, 0.1));
+            border-color: #ff0064;
+        }
+        
+        .impact-content {
+            padding: 3rem;
+        }
+        
+        .impact-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .positive-impact .impact-title {
+            color: #00ff64;
+            text-shadow: 0 0 20px #00ff64;
+        }
+        
+        .negative-impact .impact-title {
+            color: #ff0064;
+            text-shadow: 0 0 20px #ff0064;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 2px solid #00ffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+        
+        .author {
+            color: #00ffff;
+            font-weight: 700;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00ffff, #ff00ff);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ff00ff, #00ff64);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">DEEP FAKE AI</div>
+            <ul class="nav-links">
+                <li><a href="#pengertian">Pengertian</a></li>
+                <li><a href="#contoh">Contoh</a></li>
+                <li><a href="#deteksi">Deteksi</a></li>
+                <li><a href="#dampak">Dampak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>DEEP FAKE AI</h1>
+            <p>Memahami Teknologi Kecerdasan Buatan yang Mengubah Wajah Realitas Digital</p>
+        </section>
+
+        <section id="pengertian" class="section">
+            <div class="container">
+                <h2 class="section-title">Apa itu Deep Fake?</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Definisi Deep Fake</h3>
+                        <p>Deep Fake adalah teknologi kecerdasan buatan yang menggunakan machine learning untuk membuat video, audio, atau gambar palsu yang sangat realistis. Teknologi ini dapat mengganti wajah seseorang dengan wajah orang lain dalam video dengan tingkat kemiripan yang sangat tinggi.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cara Kerja Deep Fake</h3>
+                        <p>Deep Fake menggunakan neural network yang disebut Generative Adversarial Networks (GANs). Sistem ini terdiri dari dua jaringan neural:</p>
+                        <ul>
+                            <li><strong>Generator:</strong> Membuat konten palsu</li>
+                            <li><strong>Discriminator:</strong> Mendeteksi keaslian konten</li>
+                        </ul>
+                        <p>Kedua jaringan ini "berkompetisi" hingga menghasilkan konten yang sangat realistis.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Teknologi yang Digunakan</h3>
+                        <ul>
+                            <li>Deep Learning dan Neural Networks</li>
+                            <li>Computer Vision</li>
+                            <li>Generative Adversarial Networks (GANs)</li>
+                            <li>Facial Recognition Technology</li>
+                            <li>Video Processing Algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contoh" class="section">
+            <div class="container">
+                <h2 class="section-title">Contoh Penggunaan Deep Fake</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Industri Hiburan</h3>
+                        <ul>
+                            <li>Menghidupkan kembali aktor yang telah meninggal dalam film</li>
+                            <li>Membuat karakter digital yang realistis</li>
+                            <li>Dubbing film dengan sinkronisasi bibir yang sempurna</li>
+                            <li>Efek visual khusus yang lebih murah dan efisien</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Pendidikan dan Pelatihan</h3>
+                        <ul>
+                            <li>Simulasi presentasi dan public speaking</li>
+                            <li>Pembelajaran bahasa dengan native speaker virtual</li>
+                            <li>Rekonstruksi sejarah dengan tokoh-tokoh bersejarah</li>
+                            <li>Pelatihan medis dengan pasien virtual</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Media dan Jurnalisme</h3>
+                        <ul>
+                            <li>Pembuatan avatar news anchor</li>
+                            <li>Terjemahan berita multi-bahasa</li>
+                            <li>Konten media sosial yang menarik</li>
+                            <li>Dokumenter dengan rekonstruksi peristiwa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="deteksi" class="section">
+            <div class="container">
+                <h2 class="section-title">Cara Mendeteksi Deep Fake</h2>
+                <div class="detection-grid">
+                    <div class="detection-item">
+                        <h4>🔍 Perhatikan Detail Wajah</h4>
+                        <p>Periksa area sekitar mata, mulut, dan kulit. Deep fake sering meninggalkan artefak atau ketidakkonsistenan pada detail halus ini.</p>
+                    </div>
+                    <div class="detection-item">
+                        <h4>👁️ Analisis Gerakan Mata</h4>
+                        <p>Pergerakan mata yang tidak natural, kedipan yang tidak konsisten, atau tatapan yang tidak fokus bisa menjadi tanda deep fake.</p>
+                    </div>
+                    <div class="detection-item">
+                        <h4>💡 Periksa Pencahayaan</h4>
+                        <p>Ketidakkonsistenan pencahayaan pada wajah dibanding lingkungan sekitar sering terjadi pada video deep fake.</p>
+                    </div>
+                    <div class="detection-item">
+                        <h4>🎵 Analisis Audio-Visual</h4>
+                        <p>Sinkronisasi antara gerakan bibir dengan suara yang tidak tepat bisa mengindikasikan manipulasi video.</p>
+                    </div>
+                    <div class="detection-item">
+                        <h4>🔬 Gunakan Tools Deteksi</h4>
+                        <p>Tersedia berbagai aplikasi dan website yang menggunakan AI untuk mendeteksi deep fake secara otomatis.</p>
+                    </div>
+                    <div class="detection-item">
+                        <h4>📱 Verifikasi Sumber</h4>
+                        <p>Selalu cek keaslian sumber video dan bandingkan dengan konten resmi dari orang yang bersangkutan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dampak" class="section">
+            <div class="container">
+                <h2 class="section-title">Dampak Deep Fake dalam Kehidupan</h2>
+                
+                <div class="impact-section positive-impact">
+                    <div class="impact-content">
+                        <h3 class="impact-title">✅ DAMPAK POSITIF</h3>
+                        <div class="cards">
+                            <div class="card">
+                                <h3>Inovasi Industri Kreatif</h3>
+                                <p>Deep fake membuka peluang baru dalam industri film, game, dan konten digital. Biaya produksi menjadi lebih efisien dan memungkinkan kreativitas yang tidak terbatas.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Aksesibilitas Konten</h3>
+                                <p>Teknologi ini memungkinkan dubbing otomatis dan terjemahan visual yang membuat konten lebih mudah diakses oleh berbagai kalangan dan budaya.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Pendidikan Interaktif</h3>
+                                <p>Pembelajaran menjadi lebih menarik dengan hadirnya tokoh sejarah virtual, simulasi realistis, dan pengalaman belajar yang immersive.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-section negative-impact">
+                    <div class="impact-content">
+                        <h3 class="impact-title">⚠️ DAMPAK NEGATIF</h3>
+                        <div class="cards">
+                            <div class="card">
+                                <h3>Penyebaran Misinformasi</h3>
+                                <p>Deep fake dapat digunakan untuk membuat berita palsu yang sangat meyakinkan, merusak kepercayaan publik terhadap media dan informasi.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Kejahatan Siber</h3>
+                                <p>Teknologi ini dapat disalahgunakan untuk penipuan, pemerasan, cyberbullying, atau membuat konten yang merugikan reputation seseorang.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Erosi Kepercayaan Digital</h3>
+                                <p>Masyarakat menjadi semakin sulit membedakan antara konten asli dan palsu, yang dapat mengikis kepercayaan terhadap media digital secara keseluruhan.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Manipulasi Politik</h3>
+                                <p>Deep fake dapat digunakan untuk memanipulasi opini publik, mempengaruhi pemilihan umum, atau menciptakan kontroversi politik palsu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Langkah Preventif</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Edukasi Digital Literacy</h3>
+                        <p>Meningkatkan kesadaran masyarakat tentang teknologi deep fake dan cara mengidentifikasinya. Pendidikan literasi digital harus dimulai sejak dini.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Regulasi dan Hukum</h3>
+                        <p>Perlunya pembuatan regulasi dan hukum yang jelas mengenai penggunaan teknologi deep fake, terutama yang berkaitan dengan privasi dan kejahatan siber.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pengembangan Teknologi Deteksi</h3>
+                        <p>Investasi dalam penelitian dan pengembangan teknologi untuk mendeteksi deep fake secara otomatis dan akurat perlu terus dilakukan.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Etika Teknologi</h3>
+                        <p>Pengembang dan pengguna teknologi deep fake harus memiliki kesadaran etis yang tinggi dalam menggunakan teknologi ini secara bertanggung jawab.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Website ini dibuat untuk tujuan edukasi mengenai teknologi Deep Fake AI</p>
+            <p>Tugas Teknik dan Ilmu Komputer - SMP Kelas 9</p>
+            <p class="author">Dibuat dengan ❤️ untuk pembelajaran teknologi AI</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initially hide cards and observe them
+        document.querySelectorAll('.card, .detection-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add glitch effect to title on hover
+        const title = document.querySelector('.hero h1');
+        let glitchTimeout;
+
+        title.addEventListener('mouseenter', () => {
+            title.style.animation = 'none';
+            let glitchCount = 0;
+            const glitchInterval = setInterval(() => {
+                title.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                title.style.textShadow = `
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #ff00ff,
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #00ffff
+                `;
+                glitchCount++;
+                if (glitchCount > 10) {
+                    clearInterval(glitchInterval);
+                    title.style.transform = 'translate(0, 0)';
+                    title.style.textShadow = '';
+                    title.style.animation = 'textShimmer 3s ease-in-out infinite';
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
